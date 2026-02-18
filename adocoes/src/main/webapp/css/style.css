@@ -1,0 +1,143 @@
+/* Variáveis Globais para manter consistência */
+:root {
+    --cor-fundo: #f4f7f6;
+    --cor-texto: #333333;
+    --cor-borda: #dcdcdc;
+    --cor-foco: #007bff;
+    --cor-card: #ffffff;
+    --fonte-padrao: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    font-family: var(--fonte-padrao);
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+h1 {
+    text-align: center;
+    font-weight: 300; /* Estilo leve da Home */
+    margin-bottom: 30px;
+    color: #222;
+    font-family: var(--fonte-padrao);
+}
+
+/* --- ESTILO DA HOME (GRID) --- */
+.home ol, .home ul {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+}
+
+.home li {
+    background-color: var(--cor-card);
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+.home li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.home li a {
+    text-decoration: none;
+    color: var(--cor-texto);
+    font-weight: 400;
+    display: block;
+}
+
+/* --- ESTILO DOS FORMULÁRIOS --- */
+form {
+    background: var(--cor-card);
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+form label {
+    font-size: 14px;
+    text-align: left;
+    font-weight: 600;
+    color: #666;
+}
+
+input[type="text"], input[type="number"], input[type="email"], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: var(--fonte-padrao);
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--cor-foco);
+    box-shadow: 0 0 0 3px rgba(0,123,255,0.1);
+}
+
+/* Alinhamento do Checkbox */
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+input[type="checkbox"] {
+    width: auto;
+    transform: scale(1.2);
+}
+
+/* Botões do Formulário */
+button, input[type="submit"] {
+    padding: 15px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: var(--fonte-padrao);
+    transition: all 0.3s;
+    border: none;
+}
+
+button[type="submit"], input[type="submit"] {
+    background-color: #333;
+    color: white;
+}
+
+button[type="submit"]:hover {
+    background-color: #555;
+}
+
+.voltar-link, button[onclick] {
+    background-color: transparent;
+    color: #777;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    margin-top: 5px;
+}
+
+.voltar-link:hover {
+    background-color: #f8f9fa;
+    color: var(--cor-foco);
+}
