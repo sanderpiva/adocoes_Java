@@ -1,6 +1,6 @@
 # 🐾 Projeto Adoções
 
-Projeto de Adoções desenvolvido em **Java** no Eclipse, seguindo a arquitetura **MVC**, utilizando banco de dados **MySQL** com dados fictícios. A interface foi projetada com foco na clareza para observação dos dados (**Conceito 1**).
+Projeto de Adoções desenvolvido em **Java** no Eclipse, seguindo a arquitetura **MVC**, utilizando banco de dados **MySQL** com dados fictícios. A interface foi projetada com foco na clareza para observação dos dados.
 
 ## 🚀 Tecnologias e Estrutura
 * **Backend:** Java (JSP e Servlets).
