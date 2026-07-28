@@ -7,7 +7,7 @@
 </head>
 <body class="home"> <form action="router" method="post">
         <input type="hidden" name="controller" value="Adotantes">
-        <input type="hidden" name="acao" value="salvar">
+        <input type="hidden" name="acao" value="atualizar">
         <input type="hidden" name="id" value="<%= adotante.getId() %>">
         
         <h1>Atualizar adotantes</h1>

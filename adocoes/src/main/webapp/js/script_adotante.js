@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
         btn.addEventListener('click', function() {
             const adotanteId = this.getAttribute('data-id');
             
-            window.location.href = `router?controller=Adotantes&acao=atualizar&id=${adotanteId}`;
+            window.location.href = `router?controller=Adotantes&acao=view_atualizar&id=${adotanteId}`;
         });
     });
 

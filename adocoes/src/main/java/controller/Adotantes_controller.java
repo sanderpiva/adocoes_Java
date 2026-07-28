@@ -25,7 +25,6 @@ public class Adotantes_controller {
 		request.getRequestDispatcher("/view/listar_adotantes.jsp").forward(request, response);
 	}
 
-	// O método salvar pode lidar com cadastro e atualização
 	public void salvar(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -35,27 +34,10 @@ public class Adotantes_controller {
 		String telefone = request.getParameter("telefone");
 		String email = request.getParameter("email");
 
-		if (idParam != null && !idParam.isEmpty()) {
-		
-			try {
-				int idAdotante = Integer.parseInt(idParam);
-				Adotante adotanteAtualizado = new Adotante(idAdotante, nome, telefone, email);
-				Adotantes_model adotanteModel = new Adotantes_model();
-				if (adotanteModel.atualizarAdotante(adotanteAtualizado)) {
-					response.sendRedirect("router?controller=Adotantes&acao=listar");
-				} else {
-					// Tratar erro de atualização
-					
-				}
-			} catch (NumberFormatException e) {
-				// Tratar erro de ID
-			}
-		} else {
-			
-			Adotante novoAdotante = new Adotante(nome, telefone, email);
-			Adotantes_model.adicionar(novoAdotante);
-			response.sendRedirect("router?controller=Adotantes&acao=listar");
-		}
+				
+		Adotante novoAdotante = new Adotante(nome, telefone, email);
+		Adotantes_model.adicionar(novoAdotante);
+		response.sendRedirect("router?controller=Adotantes&acao=listar");
 	}
 
 	public void excluir(HttpServletRequest request, HttpServletResponse response)
@@ -91,10 +73,12 @@ public class Adotantes_controller {
 		}
 	}
 
-	public void atualizar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void view_atualizar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String idParam = request.getParameter("id");
+		
 		if (idParam != null && !idParam.isEmpty()) {
+			
 			try {
 				int idAdotante = Integer.parseInt(idParam);
 				Adotantes_model adotanteModel = new Adotantes_model();
@@ -106,14 +90,54 @@ public class Adotantes_controller {
 				} else {
 					
 					request.setAttribute("mensagem", "Adotante não encontrado.");
+					request.getRequestDispatcher("/erro.jsp").forward(request, response);
 					
 				}
 			} catch (NumberFormatException e) {
 				
 				request.setAttribute("mensagem", "ID do adotante inválido.");
+				request.getRequestDispatcher("/erro.jsp").forward(request, response);
 				
 			}
+			
+						
+			
 		} else {
+			
+			request.setAttribute("mensagem", "ID do adotante não fornecido.");
+			
+		}
+	}
+	
+	public void atualizar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		String idParam = request.getParameter("id");
+		
+
+		String nome = request.getParameter("nome");
+		String telefone = request.getParameter("telefone");
+		String email = request.getParameter("email");
+		
+		if (idParam != null && !idParam.isEmpty()) {
+
+			try {
+				int idAdotante = Integer.parseInt(idParam);
+				Adotante adotanteAtualizado = new Adotante(idAdotante, nome, telefone, email);
+				Adotantes_model adotanteModel = new Adotantes_model();
+				if (adotanteModel.atualizarAdotante(adotanteAtualizado)) {
+					response.sendRedirect("router?controller=Adotantes&acao=listar");
+				} else {
+					// Tratar erro de atualização
+					request.setAttribute("mensagem", "Adotante não encontrado.");
+
+				}
+			} catch (NumberFormatException e) {
+				// Tratar erro de ID
+				request.setAttribute("mensagem", "ID do adotante inválido.");			
+			}
+		} 
+		
+		else {
 			
 			request.setAttribute("mensagem", "ID do adotante não fornecido.");
 			

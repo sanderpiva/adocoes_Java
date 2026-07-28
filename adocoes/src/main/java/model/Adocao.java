@@ -17,9 +17,20 @@ public class Adocao {
 	//cadastro
 	public Adocao(int adotantes_id, int animais_id, LocalDate date_adocao) {
 		// TODO Auto-generated constructor stub
-		this.adotantes_id = adotantes_id;
-		this.animais_id = animais_id;
-		this.date_adocao = date_adocao;
+		
+		if (adotantes_id <= 0) {
+            throw new IllegalArgumentException("O ID do adotante não pode ser zero ou negativo.");
+        }
+        if (animais_id <= 0) {
+            throw new IllegalArgumentException("O ID do animal não pode ser zero ou negativo.");
+        }
+        if (date_adocao == null || date_adocao.isAfter(LocalDate.now())) {
+            throw new IllegalArgumentException("A data da adoção é inválida.");
+        }
+        
+        this.adotantes_id = adotantes_id;
+        this.animais_id = animais_id;
+        this.date_adocao = date_adocao;
 	}
 	
 	//listagem

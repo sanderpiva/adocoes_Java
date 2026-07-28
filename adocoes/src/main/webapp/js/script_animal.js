@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
         btn.addEventListener('click', function() {
             const animalId = this.getAttribute('data-id');
             // AQUI: A URL deve chamar o DispatcherServlet (router)
-            window.location.href = `router?controller=Animais&acao=atualizar&id=${animalId}`;
+            window.location.href = `router?controller=Animais&acao=view_atualizar&id=${animalId}`;
         });
     });
 
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const animalId = this.getAttribute('data-id');
             if (confirm("Tem certeza que deseja excluir este animal?")) {
                 // AQUI: A URL deve chamar o DispatcherServlet (router)
-                window.location.href = `router?controller=Animais&acao=excluir&id=${animalId}`;
+                window.location.href = `router?controller=Animais&acao=view_excluir&id=${animalId}`;
             }
         });
     });

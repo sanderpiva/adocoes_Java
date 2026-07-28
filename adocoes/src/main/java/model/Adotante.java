@@ -6,12 +6,25 @@ public class Adotante {
 	private String telefone;
 	private String email;
 	private int id;
+	
 	//cadastro
 	public Adotante(String nome, String telefone, String email) {
 		// TODO Auto-generated constructor stub
-		this.nome = nome;
-		this.telefone = telefone;
-		this.email = email;
+		if (nome == null || nome.trim().isEmpty()) {
+	        throw new IllegalArgumentException("O nome do adotante não pode ser vazio.");
+	    }
+	    
+	    if (telefone == null || telefone.trim().isEmpty()) {
+	        throw new IllegalArgumentException("O telefone do adotante não pode ser vazio.");
+	    }
+	    
+	    if (email == null || email.trim().isEmpty() || !email.contains("@")) {
+	        throw new IllegalArgumentException("E-mail inválido.");
+	    }
+
+	    this.nome = nome.trim();
+	    this.telefone = telefone.trim();
+	    this.email = email.trim();
 	}
 	
 	//listagem
