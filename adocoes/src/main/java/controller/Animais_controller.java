@@ -6,6 +6,7 @@ import model.Animal;
 import model.Animais_model;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 public class Animais_controller {
@@ -22,7 +23,7 @@ public class Animais_controller {
         request.getRequestDispatcher("/view/listar_animais.jsp").forward(request, response);
     }
     
- // O método salvar pode lidar com cadastro e atualização
+ 
     public void salvar(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
@@ -42,7 +43,7 @@ public class Animais_controller {
     
     public void excluir(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-    	
+        
         String idParam = request.getParameter("id");
         
         if (idParam != null && !idParam.isEmpty()) {
@@ -50,22 +51,38 @@ public class Animais_controller {
                 int idAnimal = Integer.parseInt(idParam);
                 
                 Animais_model animal = new Animais_model();
-                boolean excluidoComSucesso = animal.excluir(idAnimal);
+                animal.excluir(idAnimal); 
                 
-                if (excluidoComSucesso) {
-                	response.sendRedirect("router?controller=Animais&acao=listar");
-                } else {
-                    request.setAttribute("mensagem", "Erro ao excluir o animal.");
-                    request.getRequestDispatcher("/erro.jsp").forward(request, response);
-                }
+                response.sendRedirect("router?controller=Animais&acao=view_listar");
                 
             } catch (NumberFormatException e) {
-                request.setAttribute("mensagem", "ID de animal inválido.");
-                request.getRequestDispatcher("/erro.jsp").forward(request, response);
+                
+            	String flag1 = "ID inválido";
+            	
+            	request.setAttribute("flagErro", flag1);
+	            
+	        	request.getRequestDispatcher("/view/erro.jsp").forward(request, response);
+                
+            } catch (SQLException e) {
+                
+            	String mensagemErro = e.getMessage().toLowerCase();
+                
+                String flag2 = "generico";
+                if (mensagemErro.contains("foreign key") || mensagemErro.contains("constraint") || mensagemErro.contains("violates")) {
+                    flag2 = "vinculo";
+                }
+                
+                request.setAttribute("flagErro", flag2);
+                
+                request.getRequestDispatcher("/view/erro.jsp").forward(request, response);
             }
         } else {
-            request.setAttribute("mensagem", "ID de animal não fornecido.");
-            request.getRequestDispatcher("/erro.jsp").forward(request, response);
+        	
+        	String flag3 = "ID não fornecido";
+        	
+            request.setAttribute("flagErro", flag3);
+            
+        	request.getRequestDispatcher("/view/erro.jsp").forward(request, response);
         }
     }
 
@@ -116,7 +133,7 @@ public class Animais_controller {
                 Animal animalAtualizado = new Animal(idAnimal, nome, especie, raca, descricao, disponivel);
                 Animais_model animalModel = new Animais_model();
                 if (animalModel.atualizarAnimal(animalAtualizado)) {
-                    response.sendRedirect("router?controller=Animais&acao=listar");
+                    response.sendRedirect("router?controller=Animais&acao=view_listar");
                 } else {
                     // Tratar erro de atualização
                 }

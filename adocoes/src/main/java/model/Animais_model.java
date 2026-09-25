@@ -77,8 +77,8 @@ public class Animais_model {
 
         return lista;
     }
-
-    public boolean excluir(int idAnimal) {
+    
+    public boolean excluir(int idAnimal) throws SQLException {
         String sql = "DELETE FROM animais WHERE id = ?";
         
         try (Connection conn = Conecta.getConexao();
@@ -88,14 +88,11 @@ public class Animais_model {
             int linhasAfetadas = stmt.executeUpdate();
             
             return linhasAfetadas > 0;
-            
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-        }
+        } 
+        // Ao tirar o catch, a SQLException sobe para o Servlet tratar especificamente.
     }
     
-    // NOVO MÉTODO: Refatorado para usar try-with-resources
+    
     public Animal getAnimalById(int id) {
         String sql = "SELECT id, nome, especie, raca, descricao, disponivel FROM animais WHERE id = ?";
         Animal animal = null;
@@ -105,7 +102,6 @@ public class Animais_model {
             
             stmt.setInt(1, id);
             
-            // O ResultSet também é gerenciado por try-with-resources
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
                     int animalId = rs.getInt("id");
@@ -124,7 +120,6 @@ public class Animais_model {
         return animal;
     }
 
-    // NOVO MÉTODO: Refatorado para usar try-with-resources
     public boolean atualizarAnimal(Animal animal) {
         String sql = "UPDATE animais SET nome = ?, especie = ?, raca = ?, descricao = ?, disponivel = ? WHERE id = ?";
         

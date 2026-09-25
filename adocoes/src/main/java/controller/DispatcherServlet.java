@@ -28,15 +28,15 @@ public class DispatcherServlet extends HttpServlet {
 			Animais_controller animaisCtrl = new Animais_controller();
 			
 			//carrega interfaces/views
-			if (acao.equals("cadastrar")) {
+			if (acao.equals("view_cadastrar")) {
 				animaisCtrl.cadastrar(request, response);
 			}
 
-			else if (acao.equals("listar")) {
+			else if (acao.equals("view_listar")) {
 				animaisCtrl.listar(request, response);
 			}
 
-			else if (acao.equals("atualizar")) {
+			else if (acao.equals("view_atualizar")) {
 				animaisCtrl.view_atualizar(request, response);
 			}
 			
@@ -52,10 +52,10 @@ public class DispatcherServlet extends HttpServlet {
 		case "Adotantes":
 			Adotantes_controller adotantesCtrl = new Adotantes_controller();
 			
-			if (acao.equals("cadastrar")) {
+			if (acao.equals("view_cadastrar")) {
 				adotantesCtrl.cadastrar(request, response);
 
-			} else if (acao.equals("listar")) {
+			} else if (acao.equals("view_listar")) {
 				adotantesCtrl.listar(request, response);
 
 			} else if (acao.equals("view_atualizar")) {
@@ -71,10 +71,10 @@ public class DispatcherServlet extends HttpServlet {
 
 		case "Adocoes":
 			Adocoes_controller adocoesCtrl = new Adocoes_controller();
-			if (acao.equals("cadastrar")) {
+			if (acao.equals("view_cadastrar")) {
 				adocoesCtrl.cadastrar(request, response);
 
-			} else if (acao.equals("listar")) {
+			} else if (acao.equals("view_listar")) {
 				adocoesCtrl.listar(request, response);
 
 			} else if (acao.equals("desfazer_adocao")) {

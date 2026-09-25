@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 import jakarta.servlet.ServletException;
@@ -39,40 +40,53 @@ public class Adotantes_controller {
 		Adotantes_model.adicionar(novoAdotante);
 		response.sendRedirect("router?controller=Adotantes&acao=listar");
 	}
+	
 
 	public void excluir(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	        throws ServletException, IOException {
 
-		String idParam = request.getParameter("id");
+	    String idParam = request.getParameter("id");
 
-		if (idParam != null && !idParam.isEmpty()) {
-			try {
-				int idAdotante = Integer.parseInt(idParam);
+	    if (idParam != null && !idParam.isEmpty()) {
+	        try {
+	            int idAdotante = Integer.parseInt(idParam);
 
-				Adotantes_model adotante = new Adotantes_model();
-				boolean excluidoComSucesso = adotante.excluir(idAdotante);
+	            Adotantes_model adotante = new Adotantes_model();
+	            adotante.excluir(idAdotante); 
 
-				if (excluidoComSucesso) {
-		
-					response.sendRedirect("router?controller=Adotantes&acao=listar");
-				} else {
-					
-					request.setAttribute("mensagem", "Erro ao excluir o adotante.");
-					request.getRequestDispatcher("/erro.jsp").forward(request, response);
-				}
+	            response.sendRedirect("router?controller=Adotantes&acao=view_listar");
 
-			} catch (NumberFormatException e) {
-				
-				request.setAttribute("mensagem", "ID de adotante inválido.");
-				request.getRequestDispatcher("/erro.jsp").forward(request, response);
-			}
-		} else {
-			
-			request.setAttribute("mensagem", "ID de adotante não fornecido.");
-			request.getRequestDispatcher("/erro.jsp").forward(request, response);
-		}
+	        } catch (NumberFormatException e) {
+	        	
+	        	String flag1 = "ID inválido";
+	        	
+	            request.setAttribute("flagErro", flag1);
+	            
+	        	request.getRequestDispatcher("/view/erro.jsp").forward(request, response);
+
+	        } catch (SQLException e) {
+	            String mensagemErro = e.getMessage().toLowerCase();
+
+	            String flag2 = "generico";
+	            
+	            if (mensagemErro.contains("foreign key") || mensagemErro.contains("constraint") || mensagemErro.contains("violates")) {
+	                flag2 = "vinculo"; 
+	            }
+
+	            request.setAttribute("flagErro", flag2);
+	            request.getRequestDispatcher("/view/erro.jsp").forward(request, response);
+	        }
+	    } else {
+	       
+	    	String flag3 = "ID não fornecido";
+        	
+            request.setAttribute("flagErro", flag3);
+            
+        	request.getRequestDispatcher("/view/erro.jsp").forward(request, response);
+	    }
 	}
-
+	
+	
 	public void view_atualizar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String idParam = request.getParameter("id");
@@ -125,7 +139,7 @@ public class Adotantes_controller {
 				Adotante adotanteAtualizado = new Adotante(idAdotante, nome, telefone, email);
 				Adotantes_model adotanteModel = new Adotantes_model();
 				if (adotanteModel.atualizarAdotante(adotanteAtualizado)) {
-					response.sendRedirect("router?controller=Adotantes&acao=listar");
+					response.sendRedirect("router?controller=Adotantes&acao=view_listar");
 				} else {
 					// Tratar erro de atualização
 					request.setAttribute("mensagem", "Adotante não encontrado.");

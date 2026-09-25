@@ -12,12 +12,12 @@
 	<div class="home">
 		<h1>Sistema de Adoções</h1>
 		<ol>
-			<li><a href="router?controller=Animais&acao=cadastrar">Cadastrar animal</a></li>
-			<li><a href="router?controller=Adotantes&acao=cadastrar">Cadastrar adotante</a></li>
-			<li><a href="router?controller=Adocoes&acao=cadastrar">Cadastrar adoção</a></li>
-			<li><a href="router?controller=Animais&acao=listar">Listar animal</a></li>
-			<li><a href="router?controller=Adotantes&acao=listar">Listar adotante</a></li>
-			<li><a href="router?controller=Adocoes&acao=listar">Listar adoções</a></li>
+			<li><a href="router?controller=Animais&acao=view_cadastrar">Cadastrar animal</a></li>
+			<li><a href="router?controller=Adotantes&acao=view_cadastrar">Cadastrar adotante</a></li>
+			<li><a href="router?controller=Adocoes&acao=view_cadastrar">Cadastrar adoção</a></li>
+			<li><a href="router?controller=Animais&acao=view_listar">Listar animal</a></li>
+			<li><a href="router?controller=Adotantes&acao=view_listar">Listar adotante</a></li>
+			<li><a href="router?controller=Adocoes&acao=view_listar">Listar adoções</a></li>
 			<li><a href="router?controller=Adocoes&acao=desfazer_adocao">Desfazer adoções</a></li>
 			
 			

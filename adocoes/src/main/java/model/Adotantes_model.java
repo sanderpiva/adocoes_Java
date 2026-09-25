@@ -52,8 +52,8 @@ public class Adotantes_model {
 
 		return lista;
 	}
-
-	public boolean excluir(int idAdotante) {
+	
+	public boolean excluir(int idAdotante) throws SQLException{
 		// TODO Auto-generated method stub
 		String sql = "DELETE FROM adotantes WHERE id = ?";
 		try (Connection conn = Conecta.getConexao();
@@ -61,29 +61,23 @@ public class Adotantes_model {
 			stmt.setInt(1, idAdotante);
 			int linhasAfetadas = stmt.executeUpdate();
 
-			// Retorna true se pelo menos uma linha foi excluída
+			
 			return linhasAfetadas > 0;
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return false;
 		}
-	}
 
+	}
+	
 	public Adotante getAdotanteById(int id) {
 		// TODO Auto-generated method stub
 		
 		String sql = "SELECT * FROM adotantes WHERE id = ?";
         Adotante adotante = null;
 
-        // CORREÇÃO: O bloco try-catch-finally tradicional foi substituído por try-with-resources
-        // para um fechamento automático e mais limpo da Connection e do PreparedStatement.
         try (Connection conn = Conecta.getConexao();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             
             stmt.setInt(1, id);
             
-            // O ResultSet também é gerenciado por try-with-resources
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
                     int adotanteId = rs.getInt("id");
@@ -106,8 +100,6 @@ public class Adotantes_model {
 
 		String sql = "UPDATE adotantes SET nome = ?, telefone = ?, email = ? WHERE id = ?";
 
-		// CORREÇÃO: O bloco try-catch-finally tradicional foi substituído por try-with-resources
-		// para um fechamento automático e mais limpo da Connection e do PreparedStatement.
 		try (Connection conn = Conecta.getConexao();
 				PreparedStatement stmt = conn.prepareStatement(sql)) {
 
