@@ -12,25 +12,11 @@ Projeto de Adoções desenvolvido em **Java** no Eclipse, seguindo a arquitetura
 
 ## 📸 Preview do Sistema
 
-Aqui você pode adicionar os prints das telas que desenvolvemos. 
-> **Dica:** Para que as imagens apareçam, salve os arquivos na pasta `img` do seu projeto e substitua os nomes abaixo.
-
-### 🏠 Home e Cadastros (style.css)
-![1](https://github.com/user-attachments/assets/7f2e65f4-14f3-4a8d-bec6-9e8dd6aa2350)
-![2](https://github.com/user-attachments/assets/79740864-ee1e-4c7f-ad3f-8f323bc90153)
-![3](https://github.com/user-attachments/assets/5e945972-1d52-4166-818e-2d19fd33adc8)
-![4](https://github.com/user-attachments/assets/5314947e-2df5-4092-99a3-0e0de702dff3)
-![8](https://github.com/user-attachments/assets/9a81a75d-3377-4d64-bc57-26a7431aebb2)
-
-| *Menu em Grid com 2 colunas e efeitos de hover.* | *Layout em 'Card' centralizado com Flexbox.* |
-
-### 📋 Listagens e Tabelas (style2.css)
-![5](https://github.com/user-attachments/assets/f627060a-3439-4d61-a382-c289fae7c929)
-![6](https://github.com/user-attachments/assets/a7d82d3d-e299-49d9-bc46-3083b5d7570e)
-![7](https://github.com/user-attachments/assets/60682e36-0eb5-466f-b3f3-41827c50c008)
-
-
-| *Tabela com fontes leves (Segoe UI) e botões discretos.* | *Botão 'Voltar' centralizado no rodapé da página.* |
+### 🏠 Home e Cadastros 
+<img width="1366" height="729" alt="f1a" src="https://github.com/user-attachments/assets/93690a83-5c08-487a-a354-49bdbfbe5b5d" />
+<img width="1366" height="726" alt="f2b" src="https://github.com/user-attachments/assets/33e117c8-72ad-4103-ae2d-8b5eb56ba23b" />
+<img width="1366" height="725" alt="f3a" src="https://github.com/user-attachments/assets/a6187b1f-7c89-4b28-abcc-5e9b701d8f1b" />
+<img width="1366" height="726" alt="f4a" src="https://github.com/user-attachments/assets/16f6fcd9-e6dd-40b2-bc3e-1f7488e8ca78" />
 
 ---
 
