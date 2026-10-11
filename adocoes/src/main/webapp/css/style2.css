@@ -1,0 +1,87 @@
+/* Configuração do Corpo da Página */
+body {
+    background-color: #f4f7f6;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza o conteúdo principal horizontalmente */
+}
+
+h1 {
+    font-weight: 300; 
+    color: #333;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Container da Tabela */
+table {
+    width: 100%;
+    max-width: 1000px;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 30px; /* Espaço para o botão abaixo da tabela */
+}
+
+th, td {
+    padding: 16px;
+    text-align: left;
+    border-bottom: 1px solid #f0f0f0;
+    font-weight: 400;
+    color: #444;
+}
+
+th {
+    background-color: #f8f9fa;
+    color: #888;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+
+/* Botões de Ação na Tabela */
+.btn-atualizar, .btn-excluir {
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 13px;
+    cursor: pointer;
+    border: none;
+    transition: opacity 0.3s;
+    color: white;
+}
+
+.btn-atualizar { background-color: #6c757d; }
+.btn-excluir { background-color: #e57373; }
+
+
+.container-voltar {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.btn-voltar {
+    background-color: transparent;
+    color: #777;
+    padding: 10px 25px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+.btn-voltar:hover {
+    background-color: #ffffff;
+    color: #007bff;
+    border-color: #007bff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
